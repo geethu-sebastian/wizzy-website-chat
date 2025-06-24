@@ -27,38 +27,38 @@ const WebsitePreview = ({ content }: WebsitePreviewProps) => {
   };
 
   return (
-    <div className="h-full flex flex-col bg-white">
+    <div className="h-full flex flex-col bg-gradient-to-b from-slate-800/30 to-slate-900/30 backdrop-blur-sm">
       {/* Header */}
-      <div className="p-4 border-b-2 border-black bg-gray-50">
+      <div className="p-4 border-b border-white/10 bg-white/5 backdrop-blur-sm">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <h3 className="text-lg font-semibold text-black">Live Preview</h3>
-            <div className="flex items-center gap-1 bg-black text-white px-2 py-1 text-xs">
-              <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+            <h3 className="text-lg font-semibold text-white">Live Preview</h3>
+            <div className="flex items-center gap-1 bg-green-500/20 text-green-400 px-2 py-1 rounded-full text-xs">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               Live
             </div>
           </div>
           
           <div className="flex items-center gap-2">
             {/* Device Toggle */}
-            <div className="flex items-center bg-gray-200 border-2 border-black p-1">
+            <div className="flex items-center bg-white/10 rounded-lg p-1">
               <button
                 onClick={() => setDeviceView('desktop')}
-                className={`p-2 ${deviceView === 'desktop' ? 'bg-black text-white' : 'text-black hover:bg-gray-100'}`}
+                className={`p-2 rounded ${deviceView === 'desktop' ? 'bg-white/20 text-white' : 'text-gray-400 hover:text-white'}`}
                 title="Desktop View"
               >
                 <Monitor className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setDeviceView('tablet')}
-                className={`p-2 ${deviceView === 'tablet' ? 'bg-black text-white' : 'text-black hover:bg-gray-100'}`}
+                className={`p-2 rounded ${deviceView === 'tablet' ? 'bg-white/20 text-white' : 'text-gray-400 hover:text-white'}`}
                 title="Tablet View"
               >
                 <Tablet className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setDeviceView('mobile')}
-                className={`p-2 ${deviceView === 'mobile' ? 'bg-black text-white' : 'text-black hover:bg-gray-100'}`}
+                className={`p-2 rounded ${deviceView === 'mobile' ? 'bg-white/20 text-white' : 'text-gray-400 hover:text-white'}`}
                 title="Mobile View"
               >
                 <Smartphone className="w-4 h-4" />
@@ -68,7 +68,7 @@ const WebsitePreview = ({ content }: WebsitePreviewProps) => {
             {/* Refresh Button */}
             <button
               onClick={handleRefresh}
-              className="p-2 text-black hover:bg-gray-100 transition-colors border-2 border-black"
+              className="p-2 text-gray-400 hover:text-white transition-colors"
               title="Refresh Preview"
             >
               <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
@@ -76,7 +76,7 @@ const WebsitePreview = ({ content }: WebsitePreviewProps) => {
             
             {/* External Link */}
             <button
-              className="p-2 text-black hover:bg-gray-100 transition-colors border-2 border-black"
+              className="p-2 text-gray-400 hover:text-white transition-colors"
               title="Open in New Tab"
             >
               <ExternalLink className="w-4 h-4" />
@@ -87,10 +87,10 @@ const WebsitePreview = ({ content }: WebsitePreviewProps) => {
 
       {/* Preview Area */}
       <div className="flex-1 p-4 flex items-center justify-center overflow-auto">
-        <div className={`${getPreviewStyles()} transition-all duration-300 ${deviceView !== 'desktop' ? 'border-2 border-black overflow-hidden shadow-lg' : ''}`}>
+        <div className={`${getPreviewStyles()} transition-all duration-300 ${deviceView !== 'desktop' ? 'border border-white/20 rounded-lg overflow-hidden shadow-2xl' : ''}`}>
           <iframe
             srcDoc={content}
-            className="w-full h-full border-0 bg-white"
+            className="w-full h-full border-0 bg-white rounded-lg"
             sandbox="allow-scripts allow-same-origin"
             title="Website Preview"
           />
@@ -98,8 +98,8 @@ const WebsitePreview = ({ content }: WebsitePreviewProps) => {
       </div>
 
       {/* Status Bar */}
-      <div className="p-3 border-t-2 border-black bg-gray-50">
-        <div className="flex items-center justify-between text-xs text-gray-600">
+      <div className="p-3 border-t border-white/10 bg-white/5 backdrop-blur-sm">
+        <div className="flex items-center justify-between text-xs text-gray-400">
           <div className="flex items-center gap-4">
             <span>Ready</span>
             <span>•</span>
