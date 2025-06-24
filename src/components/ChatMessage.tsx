@@ -16,27 +16,27 @@ interface ChatMessageProps {
 const ChatMessage = ({ message }: ChatMessageProps) => {
   return (
     <div className={`flex gap-3 ${message.isUser ? 'flex-row-reverse' : 'flex-row'}`}>
-      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+      <div className={`w-8 h-8 border-2 border-black flex items-center justify-center flex-shrink-0 ${
         message.isUser 
-          ? 'bg-gradient-to-r from-blue-500 to-cyan-500' 
-          : 'bg-gradient-to-r from-purple-500 to-pink-500'
+          ? 'bg-black' 
+          : 'bg-white'
       }`}>
         {message.isUser ? (
           <User className="w-4 h-4 text-white" />
         ) : (
-          <MessageCircle className="w-4 h-4 text-white" />
+          <MessageCircle className="w-4 h-4 text-black" />
         )}
       </div>
       
       <div className={`max-w-[80%] ${message.isUser ? 'text-right' : 'text-left'}`}>
-        <div className={`inline-block px-4 py-3 rounded-2xl ${
+        <div className={`inline-block px-4 py-3 ${
           message.isUser 
-            ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white' 
-            : 'bg-white/10 backdrop-blur-sm text-gray-100 border border-white/20'
+            ? 'bg-black text-white border-2 border-black' 
+            : 'bg-gray-100 text-black border-2 border-black'
         }`}>
           <p className="text-sm leading-relaxed">{message.text}</p>
         </div>
-        <p className={`text-xs text-gray-400 mt-1 ${message.isUser ? 'text-right' : 'text-left'}`}>
+        <p className={`text-xs text-gray-500 mt-1 ${message.isUser ? 'text-right' : 'text-left'}`}>
           {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
         </p>
       </div>
