@@ -52,12 +52,12 @@ const ChatInterface = ({ messages, onSendMessage }: ChatInterfaceProps) => {
   ];
 
   return (
-    <div className="h-full flex flex-col bg-white">
+    <div className="h-full flex flex-col bg-gradient-to-b from-slate-800/50 to-slate-900/50 backdrop-blur-sm">
       {/* Header */}
-      <div className="p-6 border-b-2 border-black bg-black">
+      <div className="p-6 border-b border-white/10 bg-white/5 backdrop-blur-sm">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 border-2 border-white bg-white flex items-center justify-center">
-            <Sparkles className="w-5 h-5 text-black" />
+          <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+            <Sparkles className="w-5 h-5 text-white" />
           </div>
           <div>
             <h2 className="text-xl font-semibold text-white">AI Website Builder</h2>
@@ -74,14 +74,14 @@ const ChatInterface = ({ messages, onSendMessage }: ChatInterfaceProps) => {
         
         {isTyping && (
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 border-2 border-black bg-black flex items-center justify-center flex-shrink-0">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center flex-shrink-0">
               <MessageCircle className="w-4 h-4 text-white" />
             </div>
-            <div className="bg-gray-100 border-2 border-black px-4 py-3">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/20">
               <div className="flex gap-1">
-                <div className="w-2 h-2 bg-black rounded-full animate-bounce"></div>
-                <div className="w-2 h-2 bg-black rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                <div className="w-2 h-2 bg-black rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
               </div>
             </div>
           </div>
@@ -92,14 +92,14 @@ const ChatInterface = ({ messages, onSendMessage }: ChatInterfaceProps) => {
 
       {/* Quick Suggestions */}
       {messages.length === 1 && (
-        <div className="p-4 border-t-2 border-black">
-          <p className="text-sm text-gray-600 mb-3">Try these suggestions:</p>
+        <div className="p-4 border-t border-white/10">
+          <p className="text-sm text-gray-300 mb-3">Try these suggestions:</p>
           <div className="grid grid-cols-1 gap-2">
             {suggestions.map((suggestion, index) => (
               <button
                 key={index}
                 onClick={() => onSendMessage(suggestion)}
-                className="text-left p-3 bg-gray-100 hover:bg-gray-200 border-2 border-black text-sm text-black transition-all duration-200"
+                className="text-left p-3 rounded-lg bg-white/5 hover:bg-white/10 border border-white/10 text-sm text-gray-300 hover:text-white transition-all duration-200"
               >
                 {suggestion}
               </button>
@@ -109,19 +109,19 @@ const ChatInterface = ({ messages, onSendMessage }: ChatInterfaceProps) => {
       )}
 
       {/* Input */}
-      <div className="p-4 border-t-2 border-black bg-gray-50">
+      <div className="p-4 border-t border-white/10 bg-white/5 backdrop-blur-sm">
         <form onSubmit={handleSubmit} className="flex gap-3">
           <input
             type="text"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             placeholder="Describe the website you want to create..."
-            className="flex-1 bg-white border-2 border-black px-4 py-3 text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400"
+            className="flex-1 bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent backdrop-blur-sm"
           />
           <button
             type="submit"
             disabled={!inputText.trim()}
-            className="bg-black text-white border-2 border-black px-6 py-3 hover:bg-gray-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 font-medium"
+            className="bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl px-6 py-3 hover:from-purple-600 hover:to-pink-600 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 font-medium"
           >
             <Send className="w-4 h-4" />
             Send
